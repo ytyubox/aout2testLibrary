@@ -9,28 +9,44 @@
 
 
 import XCTest
-@testable import aout2testLibrary
+import TestSpy
+
+class ILogger {
+    func LogError(message: String) {
+        
+    }
+}
+class LogAnalyzer {
+    let logger: ILogger
+    
+    internal init(logger: ILogger) {
+        self.logger = logger
+    }
+    
+    var minNameLength = 10
+    
+    func analyze(_ filename: String) {
+        if filename.count < minNameLength {
+            logger.LogError(message: "Filename too short: \(filename)")
+        }
+    }
+}
+
+class FakeLogger: ILogger {
+    var lastError: String?
+    override func LogError(message: String) {
+        lastError = message
+    }
+}
 
 class aout2testLibraryTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_手刻假物件來進行驗證() {
+        let logger = FakeLogger()
+        let analyzer = LogAnalyzer(logger: logger)
+        analyzer.minNameLength = 6
+        analyzer.analyze("a.txt")
+        
+        XCTAssertTrue(logger.lastError!.contains("too short"))
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

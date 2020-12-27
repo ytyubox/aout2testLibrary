@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		9A76A4962598C21000DBE91B /* aout2testLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A76A48C2598C20F00DBE91B /* aout2testLibrary.framework */; };
 		9A76A49B2598C21000DBE91B /* aout2testLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A76A49A2598C21000DBE91B /* aout2testLibraryTests.swift */; };
 		9A76A49D2598C21000DBE91B /* aout2testLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A76A48F2598C20F00DBE91B /* aout2testLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A76A4BA2598CA0300DBE91B /* TestSpy in Frameworks */ = {isa = PBXBuildFile; productRef = 9A76A4B92598CA0300DBE91B /* TestSpy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A76A4962598C21000DBE91B /* aout2testLibrary.framework in Frameworks */,
+				9A76A4BA2598CA0300DBE91B /* TestSpy in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +144,9 @@
 				9A76A4982598C21000DBE91B /* PBXTargetDependency */,
 			);
 			name = aout2testLibraryTests;
+			packageProductDependencies = (
+				9A76A4B92598CA0300DBE91B /* TestSpy */,
+			);
 			productName = aout2testLibraryTests;
 			productReference = 9A76A4952598C21000DBE91B /* aout2testLibraryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -172,6 +177,9 @@
 				Base,
 			);
 			mainGroup = 9A76A4822598C20F00DBE91B;
+			packageReferences = (
+				9A76A4B82598CA0300DBE91B /* XCRemoteSwiftPackageReference "TestSpy" */,
+			);
 			productRefGroup = 9A76A48D2598C20F00DBE91B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -458,6 +466,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9A76A4B82598CA0300DBE91B /* XCRemoteSwiftPackageReference "TestSpy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/f-meloni/TestSpy";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9A76A4B92598CA0300DBE91B /* TestSpy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A76A4B82598CA0300DBE91B /* XCRemoteSwiftPackageReference "TestSpy" */;
+			productName = TestSpy;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9A76A4832598C20F00DBE91B /* Project object */;
 }
