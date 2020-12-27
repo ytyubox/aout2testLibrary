@@ -49,4 +49,55 @@ class aout2testLibraryTests: XCTestCase {
         
         XCTAssertTrue(logger.lastError!.contains("too short"))
     }
+    
+    func test() {
+        let logger = SPYLogger()
+        let analyzer = LogAnalyzer(logger: logger)
+        analyzer.minNameLength = 6
+        analyzer.analyze("a.txt")
+        XCTAssertTrue(
+            logger
+                .check(method: All<SPYLogger.LogError>(string: "too short"),
+                       predicate: P<SPYLogger.LogError>(vaildater: { all in
+                    return all.string.contains("too short")
+                })))
+        
+    }
+}
+
+class SPYLogger: ILogger, TestSpy {
+    
+    enum LogError {}
+    typealias Method = All<LogError>
+    var callstack: CallstackContainer<Method> = CallstackContainer()
+    override func LogError(message: String) {
+        callstack.record(All<LogError>(string: message))
+    }
+}
+
+struct All<Tag>:Equatable {
+    internal init( i: Int? = nil, string: String? = nil) {
+        self.i = i
+        self.string = string
+    }
+    
+    
+    var i: Int!
+    var string: String!
+}
+
+struct P<Tag>:CallstackPredicate {
+    
+    typealias Method = All<Tag>
+    
+    let vaildater:(Method) -> Bool
+    
+    func check(method: All<Tag>, against callstack: [All<Tag>]) -> Bool {
+        let r = callstack.first(where: vaildater) != nil
+        return r
+    }
+    
+    func description(forMethod method: All<Tag>) -> String {
+        ""
+    }
 }

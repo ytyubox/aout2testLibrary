@@ -134,6 +134,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A76A4A32598C21000DBE91B /* Build configuration list for PBXNativeTarget "aout2testLibraryTests" */;
 			buildPhases = (
+				9A76A4BD2598D6C400DBE91B /* ShellScript */,
 				9A76A4912598C21000DBE91B /* Sources */,
 				9A76A4922598C21000DBE91B /* Frameworks */,
 				9A76A4932598C21000DBE91B /* Resources */,
@@ -206,6 +207,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9A76A4BD2598D6C400DBE91B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9A76A4882598C20F00DBE91B /* Sources */ = {
